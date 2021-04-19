@@ -20,7 +20,7 @@ Take a look at the environments available in Gym [here](https://gym.openai.com/e
 To get started, we will use the environment [CartPole-v1](https://gym.openai.com/envs/CartPole-v1/).
 
 ### Run an Environment 🏃🏽‍♀️
-Start by creating a python file and import gym, numpy and matplotlib. You can use this minimal example to render the environment:
+Start by creating a python file and import gym, numpy and matplotlib.pyplot (as `plt`). You can use this minimal example to render the environment:
 ```python
 env = gym.make('EnvironmentName')
 env.reset()
@@ -31,7 +31,7 @@ for _ in range(Steps):
 env.close()
 ```
 Fill in the environment and the amount of steps you want to render.
-If you run the code you should see the agent (car/pendulum/cart) move.
+If you run the code you should see the cart move.
 
 There might be a warning about calling step(). It means that you are rendering the agent even though your agent has already failed (or achieved) it's task and it is therefore `done`.
-We can solve this by stating `done = False` in the beginning and adding a `while not done:` loop in the for loop.
+We can solve this by stating `done = False` in the beginning and adding a `while not done:` loop in the for-loop.
