@@ -115,3 +115,15 @@ np_array_win_size = np.array([0.25, 0.25, 0.01, 0.1])
 
 ## Step 4: Build a Q-Table ( min.) 📋
 
+**Set up the Q-table.**
+```python
+q_table = np.random.uniform(low=0, high=1, size=(Observation + [env.action_space.n]))
+q_table.shape
+```
+
+**Define the function that will return the discrete observation we defined in the previous step.**
+```python
+def get_discrete_state(state):
+    discrete_state = state/np_array_win_size+ np.array([15,10,1,10])
+    return tuple(discrete_state.astype(np.int))
+```
