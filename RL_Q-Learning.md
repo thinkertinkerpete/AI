@@ -62,8 +62,6 @@ The `step` function contains even more information. It contains these four value
 
 **Use `done` to solve the error from step 1 (fill in how many episodes you want to run):**
 ```python
-done = False
-
 for i_episode in range(Episodes):
     observation = env.reset()
     for t in range(Steps):
@@ -113,7 +111,7 @@ Observation = [30, 30, 50, 50]
 np_array_win_size = np.array([0.25, 0.25, 0.01, 0.1])
 ```
 
-## Step 4: Build a Q-Table ( min.) 📋
+## Step 4: Build a Q-Table and Start Training (15 min.) 📋🤓
 
 **Set up the Q-table.**
 ```python
@@ -128,35 +126,41 @@ def get_discrete_state(state):
     return tuple(discrete_state.astype(np.int))
 ```
 
+**Next, write a for loop that goes through the episodes and sets a timer that counts the time the cart is able to balance the pole.**
 ```python
-for episode in range(EPISODES + 1): //go through the episodes
-    t0 = time.time() //set the initial time
-    discrete_state = get_discrete_state(env.reset()) //get the discrete start for the restarted environment 
-    done = False
-    episode_reward = 0 //reward starts as 0 for each episode
+for episode in range(Increase episode value):
+    t0 = time.time() # Set the initial time
+    discrete_state = get_discrete_state(env.reset()) # Get the discrete start for the restarted environment 
+    done = False # Reset
+    episode_reward = 0 # Reward starts as 0 for each episode
 
     if episode % 2000 == 0: 
         print("Episode: " + str(episode))
+        
+env.close()
+```
 
+**Tell the agent what to do and render every x episodes.**
+```python
     while not done: 
 
         if np.random.random() > epsilon:
 
-            action = np.argmax(q_table[discrete_state]) //take cordinated action
+            action = np.argmax(q_table[discrete_state]) # Take coordinated action
         else:
 
-            action = np.random.randint(0, env.action_space.n) //do a random ation
+            action = np.random.randint(0, env.action_space.n) # Do a random ation
 
-        new_state, reward, done, _ = env.step(action) //step action to get new states, reward, and the "done" status.
+        new_state, reward, done, _ = env.step(action) # Step action to get new states, reward, and the "done" status.
 
-        episode_reward += reward //add the reward
+        episode_reward += reward # Add the reward
 
         new_discrete_state = get_discrete_state(new_state)
 
-        if episode % 2000 == 0: //render
-            env.render()
+        if episode % x == 0:
+            render()
 
-        if not done: //update q-table
+        if not done: # update q-table
             max_future_q = np.max(q_table[new_discrete_state])
 
             current_q = q_table[discrete_state + (action,)]
@@ -166,22 +170,28 @@ for episode in range(EPISODES + 1): //go through the episodes
             q_table[discrete_state + (action,)] = new_q
 
         discrete_state = new_discrete_state
+```
 
-    if epsilon > 0.05: //epsilon modification
+To improve training, prevent epsilon from decreasing if the current episode did worse than the one before it.
+```python
+    if epsilon > 0.05:
         if episode_reward > prior_reward and episode > 10000:
             epsilon = math.pow(epsilon_decay_value, episode - 10000)
 
             if episode % 500 == 0:
                 print("Epsilon: " + str(epsilon))
+```
 
-    t1 = time.time() //episode has finished
-    episode_total = t1 - t0 //episode total time
+Add the timer function.
+```python
+    t1 = time.time() # Episode has finished
+    episode_total = t1 - t0 # Episode total time
     total = total + episode_total
 
-    total_reward += episode_reward //episode total reward
+    total_reward += episode_reward # Episode total reward
     prior_reward = episode_reward
 
-    if episode % 1000 == 0: //every 1000 episodes print the average time and the average reward
+    if episode % 1000 == 0: # Every 1000 episodes print the average time and the average reward
         mean = total / 1000
         print("Time Average: " + str(mean))
         total = 0
@@ -189,6 +199,11 @@ for episode in range(EPISODES + 1): //go through the episodes
         mean_reward = total_reward / 1000
         print("Mean Reward: " + str(mean_reward))
         total_reward = 0
-
-env.close()
 ```
+
+**How long does it take you to get to an average reward of 100?**
+
+
+## Step 5: Plot Your Progress ( min.) 📈
+
+## Further Experimenting 🧪
