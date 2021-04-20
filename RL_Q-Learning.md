@@ -119,16 +119,16 @@ q_table = np.random.uniform(low=0, high=1, size=(Observation + [env.action_space
 q_table.shape
 ```
 
-**Define the function that will return the discrete observation we defined in the previous step.**
+Define the function that will return the discrete observation we defined in the previous step.
 ```python
 def get_discrete_state(state):
     discrete_state = state/np_array_win_size+ np.array([15,10,1,10])
     return tuple(discrete_state.astype(np.int))
 ```
 
-**Next, write a for loop that goes through the episodes and sets a timer that counts the time the cart is able to balance the pole.**
+**Next, write a for loop that goes through the episodes.**
 ```python
-for episode in range(Increase episode value):
+for episode in range(...):
     t0 = time.time() # Set the initial time
     discrete_state = get_discrete_state(env.reset()) # Get the discrete start for the restarted environment 
     done = False # Reset
@@ -149,7 +149,7 @@ env.close()
             action = np.argmax(q_table[discrete_state]) # Take coordinated action
         else:
 
-            action = np.random.randint(0, env.action_space.n) # Do a random ation
+            action = np.random.randint(0, env.action_space.n) # Take a random action
 
         new_state, reward, done, _ = env.step(action) # Step action to get new states, reward, and the "done" status.
 
@@ -182,7 +182,7 @@ To improve training, prevent epsilon from decreasing if the current episode did 
                 print("Epsilon: " + str(epsilon))
 ```
 
-Add the timer function.
+Add a timer that counts the time the cart is able to balance the pole.
 ```python
     t1 = time.time() # Episode has finished
     episode_total = t1 - t0 # Episode total time
