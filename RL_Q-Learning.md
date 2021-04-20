@@ -9,8 +9,6 @@ You need these dependencies:
 * Matplotlib: `pip install matplotlib`
 * [Python](https://www.python.org/downloads/windows/) 3.5-3.8: `python`
 
-If you work in Google Colab you need to put a `!` in front of these command prompt commands.
-
 
 ## Let's Get Started!
 
@@ -20,7 +18,7 @@ Take a look at the environments available in Gym [here](https://gym.openai.com/e
 To get started, we will use the environment [CartPole-v1](https://gym.openai.com/envs/CartPole-v1/).
 
 ### Run an Environment 🏃🏽‍♀️
-Start by creating a python file and import gym, numpy and matplotlib.pyplot (as `plt`). You can use this minimal example to render the environment:
+Start by creating a python file and import gym, numpy (`as np`) and matplotlib.pyplot (`as plt`). You can use this minimal example to render the environment:
 ```python
 env = gym.make('EnvironmentName')
 env.reset()
