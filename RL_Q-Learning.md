@@ -36,16 +36,25 @@ There might be a warning about calling step() that you can ignore for now. It me
 ### Explore the Environment Space (10 min.) 🛰️
 Let's get to know our environment. Environments in gym comes with a predetermined `action_space` and `observation_space` that contain all valid actions and observations. If you build your own environment or use 3rd party environment, it might not have this data built in.
 
-For this workshop, we want to know:
-* How many actions can the agent take?
-* ...
-* What is the highest possible observation?
-* What is the lowest possible observation?
-
-To answer these questions use the functions below.
+Use these functions to explore the CartPole-v1 space.
 ```python
 print(env.action_space) # Number of actions
 print(env.observation_space) # Array of n numbers
 print(env.observation_space.high)
 print(env.observation_space.low)
 ```
+Can you answer these questions with the functions above?:
+
+1. How many actions can the agent take?
+1. What are these actions?
+1. How many observations are there?
+1. What do the observations measure?
+1. What is the highest possible observation?
+1. What is the lowest possible observation?
+
+The `step` function contains even more information. It contains these four values (Ref.: [Open AI](https://gym.openai.com/docs/)):
+
+> * **`observation` (object)**: an environment-specific object representing your observation of the environment. For example, pixel data from a camera, joint angles and joint velocities of a robot, or the board state in a board game.
+> * **`reward` (float)**: amount of reward achieved by the previous action. The scale varies between environments, but the goal is always to increase your total reward.
+> * **`done` (boolean)**: whether it’s time to `reset` the environment again. Most (but not all) tasks are divided up into well-defined episodes, and `done` being `True` indicates the episode has terminated. (For example, perhaps the pole tipped too far, or you lost your last life.)
+> * **`info` (dict)**: diagnostic information useful for debugging. It can sometimes be useful for learning (for example, it might contain the raw probabilities behind the environment’s last state change).
