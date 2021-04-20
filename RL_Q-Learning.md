@@ -13,6 +13,7 @@ For this workshop we will be working with a local (classic) [Jupyter Notebook](h
 
 
 ## Step 1: Run an Environment (5 min.) 🏃🏽‍♀️
+
 Take a look at the environments available in Gym [here](https://gym.openai.com/envs/#classic_control).
 To get started, we will use the environment [CartPole-v1](https://gym.openai.com/envs/CartPole-v1/).
 
@@ -31,7 +32,9 @@ If you run the code you should see the cart move.
 
 There might be a warning about calling step() that you can ignore for now. It means that you are rendering the agent even though your agent has already failed (or achieved) it's task and it is therefore `done`.
 
+
 ## Step 2: Explore the Environment Space (15 min.) 🛰️
+
 Let's get to know our environment. Environments in gym comes with a predetermined `action_space` and `observation_space` that contain all valid actions and observations. If you build your own environment or use 3rd party environment, it might not have this data built in.
 
 Use these functions to explore the CartPole-v1 space.
@@ -74,4 +77,14 @@ for i_episode in range(Episodes):
 **Is it better to finish an episode faster in this case?**
 
 
-## Step 3:(15 min.)
+## Step 3: Build a Q-Table ( min.)
+
+The Q-table contains the expected reward for every possible action at any given state in the environment.
+To make it easier for our computer we need to divide the observations (float numbers) into to a set amount of integer numbers (whole numbers).
+
+```python
+DISCRETE_OS_SIZE = [40] * len(env.observation_space.high)
+discrete_os_win_size = (env.observation_space.high - env.observation_space.low) / DISCRETE_OS_SIZE
+
+print(discrete_os_win_size)
+```
