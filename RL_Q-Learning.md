@@ -16,8 +16,7 @@ For this workshop we will be working with a local (classic) [Jupyter Notebook](h
 Take a look at the environments available in Gym [here](https://gym.openai.com/envs/#classic_control).
 To get started, we will use the environment [CartPole-v1](https://gym.openai.com/envs/CartPole-v1/).
 
-**Start by creating a python file and import gym, numpy (`as np`) and matplotlib.pyplot (`as plt`). Also, define `%matplotlib inline`.**
-Then, you can use this basic example to render the environment:
+**Start by creating a python file and import gym, numpy (`as np`) and matplotlib.pyplot (`as plt`). Also, define `%matplotlib inline`. Then, you can use this basic example to render the environment:**
 ```python
 env = gym.make('EnvironmentName')
 env.reset()
@@ -42,7 +41,7 @@ print(env.observation_space) # Array of n numbers
 print(env.observation_space.high)
 print(env.observation_space.low)
 ```
-Can you answer these questions with the functions above?:
+**Can you answer these questions with the functions above?:**
 
 1. How many actions can the agent take?
 1. What are these actions?
@@ -58,5 +57,16 @@ The `step` function contains even more information. It contains these four value
 > * **`done` (boolean)**: whether it’s time to `reset` the environment again. Most (but not all) tasks are divided up into well-defined episodes, and `done` being `True` indicates the episode has terminated. (For example, perhaps the pole tipped too far, or you lost your last life.)
 > * **`info` (dict)**: diagnostic information useful for debugging. It can sometimes be useful for learning (for example, it might contain the raw probabilities behind the environment’s last state change).
 
-Use `done` to solve the error from step 1:
-
+**Use `done` to solve the error from step 1:**
+```python
+for i_episode in range(Episodes):
+    observation = env.reset()
+    for t in range(Steps):
+        env.render()
+        print(observation)
+        action = env.action_space.sample()
+        observation, reward, done, info = env.step(action)
+        if done:
+            print("Episode finished after {} timesteps".format(t+1))
+            break
+```
