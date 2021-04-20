@@ -2,7 +2,7 @@
 
 Here you will learn how to develop and test Q-learning algorithms in the Open AI Gym.
 
-## Installation 🧰
+## 🧰 Installation
 You need **[Python](https://www.python.org/downloads/windows/) 3.5-3.8** (not 3.9). Also, you need to install these dependencies using the command prompt:
 * (Check your python version: `python`)
 * Numpy: `pip install numpy`
@@ -12,7 +12,7 @@ You need **[Python](https://www.python.org/downloads/windows/) 3.5-3.8** (not 3.
 For this workshop we will be working with a local (classic) [Jupyter Notebook](https://jupyter.org/), which you can start by running `jupyter notebook` in the command prompt. It is possible to use gym in other text editors, however rendering results will work slightly different then.
 
 
-## Step 1: Run an Environment (10 min.) 🏃🏽‍♀️
+## Step 1: Run the Environment (10 min.) 🏃🏽‍♀️
 
 Take a look at the environments available in Gym [here](https://gym.openai.com/envs/#classic_control).
 To get started, we will use the environment [CartPole-v1](https://gym.openai.com/envs/CartPole-v1/).
@@ -206,4 +206,4 @@ Add a timer that counts the time the cart is able to balance the pole.
 
 ## Step 5: Plot Your Progress ( min.) 📈
 
-## Further Experimenting 🧪
+## 🧪 Further Experimenting
