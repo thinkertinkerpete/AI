@@ -31,7 +31,7 @@ If you run the code you should see the cart move.
 
 There might be a warning about calling step() that you can ignore for now. It means that you are rendering the agent even though your agent has already failed (or achieved) it's task and it is therefore `done`.
 
-## Step 2: Explore the Environment Space (10 min.) 🛰️
+## Step 2: Explore the Environment Space (15 min.) 🛰️
 Let's get to know our environment. Environments in gym comes with a predetermined `action_space` and `observation_space` that contain all valid actions and observations. If you build your own environment or use 3rd party environment, it might not have this data built in.
 
 Use these functions to explore the CartPole-v1 space.
@@ -57,16 +57,21 @@ The `step` function contains even more information. It contains these four value
 > * **`done` (boolean)**: whether it’s time to `reset` the environment again. Most (but not all) tasks are divided up into well-defined episodes, and `done` being `True` indicates the episode has terminated. (For example, perhaps the pole tipped too far, or you lost your last life.)
 > * **`info` (dict)**: diagnostic information useful for debugging. It can sometimes be useful for learning (for example, it might contain the raw probabilities behind the environment’s last state change).
 
-**Use `done` to solve the error from step 1:**
+**Use `done` to solve the error from step 1 (fill in how many episodes you want to run):**
 ```python
+done = False
+
 for i_episode in range(Episodes):
     observation = env.reset()
     for t in range(Steps):
         env.render()
-        print(observation)
         action = env.action_space.sample()
         observation, reward, done, info = env.step(action)
         if done:
             print("Episode finished after {} timesteps".format(t+1))
             break
 ```
+**Is it better to finish an episode faster in this case?**
+
+
+## Step 3:(15 min.)
