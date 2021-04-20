@@ -3,11 +3,11 @@
 Here you will learn how to develop and test Q-learning algorithms in the Open AI Gym.
 
 ## Installation
-You need these dependencies:
+You need **[Python](https://www.python.org/downloads/windows/) 3.5-3.8** (not 3.9). Also, you need to install these dependencies using the command prompt:
+* (Check your python version: `python`)
 * Numpy: `pip install numpy`
 * Gym: `pip install gym`
 * Matplotlib: `pip install matplotlib`
-* [Python](https://www.python.org/downloads/windows/) 3.5-3.8: `python`
 
 
 ## Let's Get Started!
