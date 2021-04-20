@@ -2,7 +2,7 @@
 
 Here you will learn how to develop and test Q-learning algorithms in the Open AI Gym.
 
-## Installation
+## Installation 🧰
 You need **[Python](https://www.python.org/downloads/windows/) 3.5-3.8** (not 3.9). Also, you need to install these dependencies using the command prompt:
 * (Check your python version: `python`)
 * Numpy: `pip install numpy`
@@ -12,12 +12,12 @@ You need **[Python](https://www.python.org/downloads/windows/) 3.5-3.8** (not 3.
 For this workshop we will be working with a local (classic) [Jupyter Notebook](https://jupyter.org/), which you can start by running `jupyter notebook` in the command prompt. It is possible to use gym in other text editors, however rendering results will work slightly different then.
 
 
-## Step 1: Run an Environment (5 min.) 🏃🏽‍♀️
+## Step 1: Run an Environment (10 min.) 🏃🏽‍♀️
 
 Take a look at the environments available in Gym [here](https://gym.openai.com/envs/#classic_control).
 To get started, we will use the environment [CartPole-v1](https://gym.openai.com/envs/CartPole-v1/).
 
-**Start by creating a python file and import gym, numpy (`as np`) and matplotlib.pyplot (`as plt`). Also, define `%matplotlib inline`. Then, you can use this basic example to render the environment:**
+**Start by creating a python file and `import` gym, numpy (`as np`), time, math and matplotlib.pyplot (`as plt`). Also, define `%matplotlib inline`. Then, you can use this basic example to render the environment:**
 ```python
 env = gym.make('EnvironmentName')
 env.reset()
@@ -77,14 +77,41 @@ for i_episode in range(Episodes):
 **Is it better to finish an episode faster in this case?**
 
 
-## Step 3: Build a Q-Table ( min.)
+## Step 3: Variables in Q-Learning (10 min.) 🧮
 
 The Q-table contains the expected reward for every possible action at any given state in the environment.
-To make it easier for our computer we need to divide the observations (float numbers) into to a set amount of integer numbers (whole numbers).
 
+**Before you set up the Q-table you need to define some variables that will be important in the Q-learning process:**
+
+**How high do you think the learning rate should be?**
 ```python
-DISCRETE_OS_SIZE = [40] * len(env.observation_space.high)
-discrete_os_win_size = (env.observation_space.high - env.observation_space.low) / DISCRETE_OS_SIZE
-
-print(discrete_os_win_size)
+LEARNING_RATE = # 0-1
 ```
+The learning rate defines how much you change your Q values after each step. In short: varying only a little from what you learned vs. taking big leaps.
+
+**How high do you think the discount factor should be?**
+```python
+DISCOUNT = # 0-1 
+```
+The discount determines how much future events lose their value according to how far away in time they are. A discount factor of 0 means that you only care about immediate rewards. The higher your discount factor, the farther your rewards will propagate through time.
+
+**How high do you think epsilon should be?**
+```python
+EPISODES = # How often you want to run the environment
+total = 0 # reset value
+total_reward = 0 # reset value
+prior_reward = 0 # reset value
+
+epsilon = # 0-1
+epsilon_decay_value = 0.99995
+```
+Epsilon determines how much we are selecting actions based on past rewards vs. randomly. In short: exploitation vs. exploration.
+
+To make it easier for our computer we also need to divide the observations (float numbers) into to a set amount of integer numbers (whole numbers).
+```python
+Observation = [30, 30, 50, 50]
+np_array_win_size = np.array([0.25, 0.25, 0.01, 0.1])
+```
+
+## Step 4: Build a Q-Table ( min.) 📋
+
