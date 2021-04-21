@@ -191,12 +191,12 @@ Add a timer that counts the time the cart is able to balance the pole.
     total_reward += episode_reward # Episode total reward
     prior_reward = episode_reward
 
-    if episode % 1000 == 0: # Every 1000 episodes print the average time and the average reward
-        mean = total / 1000
+    if episode % SHOW_EVERY == 0: # Define SHOW_EVERY
+        mean = total / SHOW_EVERY
         print("Time Average: " + str(mean))
         total = 0
 
-        mean_reward = total_reward / 1000
+        mean_reward = total_reward / SHOW_EVERY
         print("Mean Reward: " + str(mean_reward))
         total_reward = 0
 ```
@@ -204,7 +204,36 @@ Add a timer that counts the time the cart is able to balance the pole.
 **How long does it take you to get to an average reward of 100?**
 
 
-## Step 5: Plot Your Progress ( min.) 📈
+## Step 5: Plot Your Progress (15 min.) 📈
+
+In order to decide if our RL agent has learned enough, you can visualize the average, minimum and maximum reward achieved during the last 1000 episodes.
+
+**Use this (incomplete) example to plot the learning progress:**
+```python
+ep_rewards = []
+aggr_ep_rewards = {'ep': [], 'avg': [], 'min': [], 'max': []}
+
+    if not episode % 100:
+        np.save(f"qtables/{episode}-qtable.npy", q_table)
+
+    if not episode % SHOW_EVERY:
+        average_reward = sum(ep_rewards[-SHOW_EVERY:])/len(ep_rewards[-SHOW_EVERY:])
+        aggr_ep_rewards['ep'].append(episode)
+        aggr_ep_rewards['avg'].append(average_reward)
+        aggr_ep_rewards['min'].append(min(ep_rewards[-SHOW_EVERY:]))
+        aggr_ep_rewards['max'].append(max(ep_rewards[-SHOW_EVERY:]))
+        print(f"Episode: {episode} avg: {average_reward} min: {min(ep_rewards[-SHOW_EVERY:])} max: {max(ep_rewards[-SHOW_EVERY:])}")
+
+env.close()
+
+plt.plot(aggr_ep_rewards['ep'], aggr_ep_rewards['avg'], label="avg")
+plt.plot(aggr_ep_rewards['ep'], aggr_ep_rewards['min'], label="min")
+plt.plot(aggr_ep_rewards['ep'], aggr_ep_rewards['max'], label="max")
+plt.legend(loc=4)
+plt.show()
+```
+**Why is it useful to know the maximum and minimum performance next to the average?**
+
 
 ## 🧪 Further Reading and Experimenting
 
