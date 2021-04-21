@@ -28,7 +28,7 @@ for _ in range(Steps):
 env.close()
 ```
 **Fill in the environment and the amount of steps you want to render.**
-If you run the code you should see the cart move.
+If you run the code you should see the cart move (window might open behind browser).
 
 There might be a warning about calling step() that you can ignore for now. It means that you are rendering the agent even though your agent has already failed (or achieved) it's task and it is therefore `done`.
 
@@ -228,12 +228,12 @@ aggr_ep_rewards = {'ep': [], 'avg': [], 'min': [], 'max': []}
 
 env.close()
 
+plt.figure(figsize=(9, 9))
 # Plot here with matplotlib
 plt.plot(aggr_ep_rewards['ep'], aggr_ep_rewards['avg'], label="avg")
 plt.plot(aggr_ep_rewards['ep'], aggr_ep_rewards['min'], label="min")
 plt.plot(aggr_ep_rewards['ep'], aggr_ep_rewards['max'], label="max")
 plt.legend(loc=4)
-axes.set_ylim([0,150])
 plt.show()
 ```
 **Why is it useful to know the maximum and minimum performance next to the average?**
