@@ -212,9 +212,10 @@ In order to decide if our RL agent has learned enough, you can visualize the ave
 ```python
 ep_rewards = []
 aggr_ep_rewards = {'ep': [], 'avg': [], 'min': [], 'max': []}
-
-    if not episode % 100:
-        np.save(f"qtables/{episode}-qtable.npy", q_table)
+```
+...
+```python
+    ep_rewards.append(episode_reward)
 
     if not episode % SHOW_EVERY:
         average_reward = sum(ep_rewards[-SHOW_EVERY:])/len(ep_rewards[-SHOW_EVERY:])
