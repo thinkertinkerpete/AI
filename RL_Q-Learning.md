@@ -206,4 +206,11 @@ Add a timer that counts the time the cart is able to balance the pole.
 
 ## Step 5: Plot Your Progress ( min.) 📈
 
-## 🧪 Further Experimenting
+## 🧪 Further Reading and Experimenting
+
+### General
+garychl. [Applications of Reinforcement Learning in Real World](https://towardsdatascience.com/applications-of-reinforcement-learning-in-real-world-1a94955bcd12)
+
+### Deep RL
+* M. Wang. [Deep Q-Learning Tutorial: minDQN](https://towardsdatascience.com/deep-q-learning-tutorial-mindqn-2a4c855abffc)
+* OpenAI. [Spinning Up](https://spinningup.openai.com/en/latest/user/introduction.html)
