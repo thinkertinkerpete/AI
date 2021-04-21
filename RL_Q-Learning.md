@@ -224,13 +224,16 @@ aggr_ep_rewards = {'ep': [], 'avg': [], 'min': [], 'max': []}
         aggr_ep_rewards['min'].append(min(ep_rewards[-SHOW_EVERY:]))
         aggr_ep_rewards['max'].append(max(ep_rewards[-SHOW_EVERY:]))
         print(f"Episode: {episode} avg: {average_reward} min: {min(ep_rewards[-SHOW_EVERY:])} max: {max(ep_rewards[-SHOW_EVERY:])}")
+        print()
 
 env.close()
 
+# Plot here with matplotlib
 plt.plot(aggr_ep_rewards['ep'], aggr_ep_rewards['avg'], label="avg")
 plt.plot(aggr_ep_rewards['ep'], aggr_ep_rewards['min'], label="min")
 plt.plot(aggr_ep_rewards['ep'], aggr_ep_rewards['max'], label="max")
 plt.legend(loc=4)
+axes.set_ylim([0,150])
 plt.show()
 ```
 **Why is it useful to know the maximum and minimum performance next to the average?**
