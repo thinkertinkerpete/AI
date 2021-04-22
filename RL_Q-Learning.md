@@ -229,12 +229,7 @@ aggr_ep_rewards = {'ep': [], 'avg': [], 'min': [], 'max': []}
 env.close()
 
 plt.figure(figsize=(9, 9))
-# Plot here with matplotlib
-plt.plot(aggr_ep_rewards['ep'], aggr_ep_rewards['avg'], label="avg")
-plt.plot(aggr_ep_rewards['ep'], aggr_ep_rewards['min'], label="min")
-plt.plot(aggr_ep_rewards['ep'], aggr_ep_rewards['max'], label="max")
-plt.legend(loc=4)
-plt.show()
+# Plot here with matplotlib, include a legend
 ```
 **Why is it useful to know the maximum and minimum performance next to the average?**
 
